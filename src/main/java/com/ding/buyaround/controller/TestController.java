@@ -1,19 +1,14 @@
 package com.ding.buyaround.controller;
 
-import com.ding.buyaround.model.StockEntity;
-import com.ding.buyaround.model.StockPOI;
-import com.ding.buyaround.repository.StockRepository;
-import com.ding.buyaround.service.BMapService;
-import com.ding.buyaround.service.OssService;
+import com.ding.buyaround.model.ChatMessageEntity;
+import com.ding.buyaround.repository.ChatMessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 /**
  * Created by pc on 2017/6/1.
@@ -21,9 +16,14 @@ import java.util.stream.Collectors;
 @RestController
 public class TestController {
 
+    @Autowired
+    private ChatMessageRepository chatMessageRepository;
+
     @GetMapping("/public")
     @CrossOrigin
     public void publicService() {
+        Page<ChatMessageEntity> ret = chatMessageRepository.findAllBySenderidOrderByIdDesc( new PageRequest(0,5), 3l);
+        int k = 0;
     }
 
     @GetMapping("/secret")
