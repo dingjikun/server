@@ -17,9 +17,9 @@ public class ChatService {
     @Autowired
     private ChatMessageRepository chatMessageRepository;
 
-    public void saveMessage(ChatMessageEntity chatMessageEntity)
+    public ChatMessageEntity saveMessage(ChatMessageEntity chatMessageEntity)
     {
-        chatMessageRepository.save(chatMessageEntity);
+        return chatMessageRepository.save(chatMessageEntity);
     }
 
     public List<ChatMessageEntity> getMessages(Long senderid, int page, int size)

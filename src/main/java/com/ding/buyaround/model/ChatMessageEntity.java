@@ -1,5 +1,7 @@
 package com.ding.buyaround.model;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -19,7 +21,8 @@ public class ChatMessageEntity {
 
     private Long senderid;
     private String content;
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
+    @CreationTimestamp
     private Date createtime;
 
     public void setId(Long id) {
